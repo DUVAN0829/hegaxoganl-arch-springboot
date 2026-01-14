@@ -1,0 +1,19 @@
+package co.duvan.hexagonal.arch.app.domain.model;
+
+import lombok.*;
+
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Student {
+
+    //* Vars
+    private Long id;
+    private String firstname;
+    private String lastname;
+    private Integer age;
+    private String address;
+
+}
