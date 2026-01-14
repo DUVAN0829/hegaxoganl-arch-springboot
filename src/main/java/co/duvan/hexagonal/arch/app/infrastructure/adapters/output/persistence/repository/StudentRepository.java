@@ -3,5 +3,5 @@ package co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.r
 import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.entity.StudentEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface StudentRepository extends CrudRepository<StudentEntity, Integer> {
+public interface StudentRepository extends CrudRepository<StudentEntity, Long> {
 }

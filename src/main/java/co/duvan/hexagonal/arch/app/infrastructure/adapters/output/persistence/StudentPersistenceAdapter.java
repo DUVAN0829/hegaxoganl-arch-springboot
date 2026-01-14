@@ -2,6 +2,7 @@ package co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence;
 
 import co.duvan.hexagonal.arch.app.application.ports.output.StudentPersistencePort;
 import co.duvan.hexagonal.arch.app.domain.model.Student;
+import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.entity.StudentEntity;
 import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.mapper.StudentPersistenceMapper;
 import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.repository.StudentRepository;
 import lombok.AllArgsConstructor;
@@ -21,22 +22,23 @@ public class StudentPersistenceAdapter implements StudentPersistencePort {
     //* Methods
     @Override
     public Optional<Student> findById(Long id) {
-        return Optional.empty();
+        return repository.findById(id)
+                .map(this.mapper::toStudent);
     }
 
     @Override
     public List<Student> findAll() {
-        return null;
+        return mapper.toListStudent((List<StudentEntity>) this.repository.findAll());
     }
 
     @Override
     public Student save(Student student) {
-        return null;
+        return mapper.toStudent(repository.save(mapper.toStudentEntity(student)));
     }
 
     @Override
     public void deleteByid(Long id) {
-
+        repository.deleteById(id);
     }
 
 }

@@ -9,10 +9,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface StudentPersistenceMapper {
 
-    StudentEntity studentEntity(Student student);
+    StudentEntity toStudentEntity(Student student);
 
-    Student student(StudentEntity studentEntity);
+    Student toStudent(StudentEntity studentEntity);
 
-    List<Student> listStudent (List<StudentEntity> listStudentEntity);
+    List<Student> toListStudent (List<StudentEntity> listStudentEntity);
 
 }
