@@ -10,11 +10,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalControllerAdvice {
 
     //* Not found Exception
@@ -30,15 +31,15 @@ public class GlobalControllerAdvice {
     }
 
     //* Method Argument Not Valid Exception
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handlerMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
 
         BindingResult result = exception.getBindingResult();
 
         return ErrorResponse.builder()
-                .code(ErrorCatalog.STUDENT_NOT_FOUND.getCode())
-                .message(ErrorCatalog.STUDENT_NOT_FOUND.getMessage())
+                .code(ErrorCatalog.INVALID_STUDENT.getCode())
+                .message(ErrorCatalog.INVALID_STUDENT.getMessage())
                 .details(result.getFieldErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList())
                 .timestamp(LocalDateTime.now())
                 .build();

@@ -6,13 +6,14 @@ import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.en
 import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.mapper.StudentPersistenceMapper;
 import co.duvan.hexagonal.arch.app.infrastructure.adapters.output.persistence.repository.StudentRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
-@Service
+@RequiredArgsConstructor
+@Component
 public class StudentPersistenceAdapter implements StudentPersistencePort {
 
     //* Vars
